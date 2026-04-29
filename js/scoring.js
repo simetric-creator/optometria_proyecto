@@ -25,7 +25,7 @@ window.SCORING = {
     acuityMinPointsToPass: 6,        // 0-8 por prueba
     phoriasGreenRange: [1.5, 6.5],   // ✅ PASA si Verde (horizontal) está en este rango
     phoriasRedRange: [3.5, 5.5],     // ✅ PASA si Roja (vertical) está en este rango
-    stereopsisMinPointsToPass: 8,    // 0-10 por prueba
+    stereopsisMinPointsToPass: 10,    // 0-10 por prueba
     campoMinYesToPass: 8,            // ✅ PASA solo si Sí = 8/8
     encandilamientoTimeToPass: 'menos5', // <=5s
   },
@@ -128,7 +128,7 @@ window.SCORING = {
    *    de evaluación del consultorio.
    */
   stereopsis: {
-    correctAnswers: [0, 2, 4, 1, 3], // Índice de figura correcta por fila (0-4)
+    correctAnswers: [0, 1, 2, 3, 4], // Índice de figura correcta por fila (0-4)
     pointsCorrect:  2,  // Respuesta exacta
     pointsAny:      1,  // Seleccionó algo pero no la correcta
     pointsNone:     0,  // Seleccionó "Ninguna"
@@ -154,10 +154,13 @@ window.SCORING = {
    * Puntaje máximo: 12 pts (2 × 6 círculos)
    */
   colorDiscrimination: {
-    totalCircles:   6,   // Número de círculos mostrados
-    pointsPerCircle: 2,  // Puntos por cada número identificado correctamente
-    // ✅ Estándar actual: pasa SOLO si identifica las 6
-    requireAllToPass: true,
+    totalCircles: 6,
+    pointsPerCircle: 2,
+    // Fila 1: círculos 0,1,2 (números 32,79,23) — mínimo 2 correctos
+    // Fila 2: círculos 3,4,5 (números 92,56,63) — mínimo 2 correctos
+    // PASA solo si: fila1 >= 2 Y fila2 >= 2 (total mínimo 4)
+    minPerRow: 2,
+    requireAllToPass: false,
   },
 
   /**
@@ -279,16 +282,10 @@ window.calcularPuntajeTotal = function(answers) {
       const hasOther = !!model.other;
       const hasNoResp = !!model.noResponse;
 
-      if (hasOther || hasNoResp) {
-        pts = 0;
-      } else if (S.colorDiscrimination.requireAllToPass) {
-        pts = (identified === S.colorDiscrimination.totalCircles)
-          ? (S.colorDiscrimination.totalCircles * S.colorDiscrimination.pointsPerCircle)
-          : 0;
-      } else {
-        // fallback (si en el futuro cambian el estándar)
-        pts = identified * S.colorDiscrimination.pointsPerCircle;
-      }
+      const fila1 = [model.seen[0], model.seen[1], model.seen[2]].filter(Boolean).length;
+      const fila2 = [model.seen[3], model.seen[4], model.seen[5]].filter(Boolean).length;
+      const passColor = fila1 >= S.colorDiscrimination.minPerRow && fila2 >= S.colorDiscrimination.minPerRow;
+      pts = passColor ? (S.colorDiscrimination.totalCircles * S.colorDiscrimination.pointsPerCircle) : 0;
     }
     total += pts;
     maxTotal += 12;

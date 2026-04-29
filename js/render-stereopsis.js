@@ -10,12 +10,11 @@ const SHAPE_SVG = {
 };
 
 window.OptievalRenderers.renderStereopsis = function renderStereopsis() {
-  const baseOrder = ['star', 'circle', 'heart', 'square', 'plus'];
+  const baseOrder = ['square', 'heart', 'plus', 'star', 'plus'];
 
   const rows = [1, 2, 3, 4, 5].map(rowNum => {
     // Rotate order per row (keeps layout consistent and readable)
-    const shapeOrder = [...baseOrder];
-    for (let i = 0; i < rowNum - 1; i++) shapeOrder.push(shapeOrder.shift());
+    const shapeOrder = baseOrder;
 
     const cells = shapeOrder.map((shape, idx) => `
       <td>
