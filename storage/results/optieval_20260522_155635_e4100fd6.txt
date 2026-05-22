@@ -1,0 +1,19 @@
+OptiEval - Resultado
+Fecha: 2026-05-22T15:56:35+02:00
+----------------------------------------
+
+RESUMEN POR PRUEBA:
+  - Prueba 1 – AV Lejana OD (20/20) => PASA
+  - Prueba 2 – AV Lejana OI (20/25) => PASA
+  - Prueba 3 – AV Lejana AO (20/30) => PASA
+  - Prueba 4 – Phorias Lejanas H:5.0 V:5.0 => PASA
+  - Prueba 5 – Estereopsis => PASA
+  - Prueba 6 – Discriminación Color => PASA
+  - Prueba 7 – Campo Visual (Sí: 8/8) => PASA
+  - Prueba 8 – AV Cercana OD (20/20) => PASA
+  - Prueba 9 – AV Cercana OI (20/25) => PASA
+  - Prueba 10 – AV Cercana AO (20/30) => PASA
+  - Prueba 11 – Phorias Cercanas H:5.0 V:5.0 => PASA
+  - Prueba 12 – Encandilamiento Fila:1 Tiempo:menos5 => PASA
+
+DATA_JSON={"answers":{"1":{"col":"A","row":1,"noResponse":false},"2":{"col":"B","row":1,"noResponse":false},"3":{"col":"C","row":1,"noResponse":false},"4":{"horizontal":"5.0","vertical":"5.0"},"5":[0,1,2,3,4],"6":{"seen":[true,true,false,true,true,false],"other":false,"noResponse":false},"7":{"izquierda":{"45":"si","55":"si","70":"si","85":"si"},"derecha":{"45":"si","55":"si","70":"si","85":"si"}},"8":{"col":"A","row":1,"noResponse":false},"9":{"col":"B","row":1,"noResponse":false},"10":{"col":"C","row":1,"noResponse":false},"11":{"horizontal":"5.0","vertical":"5.0"},"12":{"fila":1,"tiempo":"menos5"}},"breakdown":[{"name":"Prueba 1 – AV Lejana OD","score":8,"max":8,"status":"PASA","detail":"(20\/20)"},{"name":"Prueba 2 – AV Lejana OI","score":7,"max":8,"status":"PASA","detail":"(20\/25)"},{"name":"Prueba 3 – AV Lejana AO","score":6,"max":8,"status":"PASA","detail":"(20\/30)"},{"name":"Prueba 4 – Phorias Lejanas","score":0,"max":5,"status":"PASA","detail":"H:5.0 V:5.0"},{"name":"Prueba 5 – Estereopsis","score":10,"max":10,"status":"PASA","detail":""},{"name":"Prueba 6 – Discriminación Color","score":12,"max":12,"status":"PASA","detail":""},{"name":"Prueba 7 – Campo Visual","score":8,"max":8,"status":"PASA","detail":"(Sí: 8\/8)"},{"name":"Prueba 8 – AV Cercana OD","score":8,"max":8,"status":"PASA","detail":"(20\/20)"},{"name":"Prueba 9 – AV Cercana OI","score":7,"max":8,"status":"PASA","detail":"(20\/25)"},{"name":"Prueba 10 – AV Cercana AO","score":6,"max":8,"status":"PASA","detail":"(20\/30)"},{"name":"Prueba 11 – Phorias Cercanas","score":0,"max":5,"status":"PASA","detail":"H:5.0 V:5.0"},{"name":"Prueba 12 – Encandilamiento","score":12,"max":12,"status":"PASA","detail":"Fila:1 Tiempo:menos5"}],"completedAt":"2026-05-22T13:56:35.259Z"}
