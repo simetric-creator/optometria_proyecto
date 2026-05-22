@@ -1120,6 +1120,7 @@ body {
   white-space: nowrap;
   font-size: 0.9rem;
   text-align: right;
+  min-width: var(--bd-col-status);
 }
 
 .breakdown-item .b-col-detail {

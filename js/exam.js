@@ -437,14 +437,14 @@ async function finalizeExam() {
   const bd = document.getElementById('resultBreakdown');
   bd.innerHTML = breakdown.map(item => {
     const statusClass = item.status === 'PASA' ? 'status-pasa' : (item.status === 'NO PASA' ? 'status-nopasa' : '');
-    // Pruebas 1,2,3,8,9,10: Snellen en columna central | PASA alineado a la derecha
+    // Pruebas 1,2,3,8,9,10: PASA en columna central | Snellen (20/20) a la derecha
     if (item.isAcuity) {
       const snellen = item.snellen || (item.detail || '').replace(/^\(|\)$/g, '');
       return `
     <div class="breakdown-item breakdown-item--acuity">
       <span class="b-col-name">${item.name}</span>
-      <span class="b-col-mid b-col-snellen">${snellen ? `(${snellen})` : ''}</span>
-      <span class="b-col-status ${statusClass}">${item.status}</span>
+      <span class="b-col-mid b-col-status ${statusClass}">${item.status}</span>
+      <span class="b-col-snellen">${snellen ? `(${snellen})` : ''}</span>
     </div>`;
     }
     const midHtml = item.detail
